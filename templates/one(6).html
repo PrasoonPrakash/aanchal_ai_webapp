@@ -6,7 +6,7 @@
     <title>Diagnosis Prediction</title>
     <style>
         body {
-            background-color: #ffe6f2;
+            background-color: hsl(192, 100%, 95%);
             font-family: Arial, sans-serif;
         }
         .container {
@@ -35,13 +35,14 @@
             border-radius: 5px;
         }
         input[type="submit"] {
-            background-color: #ff66b2;
-            color: white;
+            background-color: hsl(187, 100%, 70%);
+            color: hwb(0 1% 99%);
             border: none;
             cursor: pointer;
         }
         input[type="submit"]:hover {
-            background-color: #ff4d94;
+            background-color: hsl(187, 100%, 70%);
+            color: hwb(0 1% 99%)
         }
         img {
             display: left-;
@@ -50,12 +51,7 @@
         }
     </style>
     <script>
-        function calculateBMI() {
-            let weight = parseFloat(document.getElementById('weight').value);
-            let height = parseFloat(document.getElementById('height').value) / 100;
-            let bmi = weight / (height * height);
-            document.getElementById('BMI').value = bmi.toFixed(2);
-        }
+        
     </script>
 </head>
 <body>
@@ -80,8 +76,8 @@
     
             .btn {
                 padding: 2.5px 5px;
-                background-color: #ff4d94; /* Change to desired color */
-                color: white;
+                background-color: hsl(187, 100%, 70%); /* Change to desired color */
+                color: rgb(6, 6, 6);
                 text-decoration: none;
                 border-radius: 5px;
                 transition: background-color 0.3s;
@@ -92,7 +88,7 @@
             }
     
             .btn:hover {
-                background-color: #ff4d94; /* Change to desired hover color */
+                background-color: hsl(187, 100%, 70%); /* Change to desired hover color */
             }
              /* Media Queries */
         @media (max-width: 767px) {
@@ -159,192 +155,270 @@
 
         <form action="/predict" method="post">
             <div class="form-group">
-                <label for="CAUSE_MENOPAUSE">
-                    CAUSE_MENOPAUSE (How was your menopause achieved, if any):<br>
-                    <span lang="hi">CAUSE_MENOPAUSE (यदि कोई हो, तो आपका रजोनिवृत्ति कैसे प्राप्त हुआ?):</span>
+                
+                <label for="AGE">
+                    What is your current age?<br>
+                    <span lang="hi">आपकी वर्तमान उम्र क्या है??</span>
                 </label>
-                <select name="CAUSE_MENOPAUSE" required>
-                    <option value="">Select</option>
-                    <option value="CHEMO-INDUCED">CHEMO-INDUCED (कीमो-प्रेरित)</option>
-                    <option value="HORMONAL TREATMENT">HORMONAL TREATMENT (हार्मोनल उपचार)</option>
-                    <option value="NATURAL">NATURAL (प्राकृतिक)</option>
-                    <option value="HYSTERECTOMY">HYSTERECTOMY (हिस्टेरेक्टॉमी)</option>
-                    <option value="NR">NR (NR)</option>
+                <input type="number" step="0.5" name="AGE" required><br>
+                
+                
+                <label for="AGE_FIRST CHILD BIRTH">
+                  At what age did you give birth to your first child?<br>
+                  <span lang="hi">आपने अपने पहले बच्चे को जन्म देने पर कितनी उम्र थी?</span>
+                </label>
+                <input type="number" step="0.01" name="AGE_FIRST CHILD BIRTH" required><br>
+
+
+
+                <label for="CONTRACEPTIVE_DURATION_MNTHS">
+                    For how many months have you used contraceptive methods?<br>
+                    <span lang="hi">आपने गर्भनिरोधक विधियों का कितने महीनों तक उपयोग किया?</span>
+                </label>
+                <input type="number" step="0.01" name="CONTRACEPTIVE_DURATION_MNTHS" required><br>
+        
+        
+                
+                <label for="PHYSICAL ACTIVITY_DURATION_MINS">
+                    On average, how many minutes do you engage in physical activity daily?<br>
+                    <span lang="hi">आप प्रतिदिन औसतन कितने मिनट शारीरिक गतिविधि में संलग्न होते हैं?</span>
+                </label>
+                <input type="number" step="0.01" name="PHYSICAL ACTIVITY_DURATION_MINS" required><br>
+
+
+ 
+                <label for="HEIGHT (IN CMS)">
+                    What is your height in centimeters?<br>
+                    <span lang="hi">आपकी ऊंचाई सेंटीमीटर में कितनी है?</span>
+                </label>
+                <input type="number" step="0.5" name="HEIGHT (IN CMS)" required><br>
+                
+
+            
+              <label for="EDUCATION">
+                  What is the highest level of education you have completed?<br>
+                  <span lang="hi">आपकी शिक्षा का सर्वोच्च स्तर क्या है?</span>
+              </label>
+              <select name="EDUCATION" required>
+                  <option value="">Select</option>
+                  <option value="GRADUATE">GRADUATE (स्नातक)</option>
+                  <option value="ILLITERATE">ILLITERATE (अनपढ़)</option>
+                  <option value="INTERMEDIATE">INTERMEDIATE (मध्यवर्ती)</option>
+                  <option value="POST GRADUATE">POST GRADUATE (स्नातकोत्तर)</option>
+                  <option value="PRIMARY">PRIMARY (प्राथमिक)</option>
+                  <option value="SECONDARY">SECONDARY (माध्यमिक)</option>
+                 
+                  <!-- Add all possible alternatives here -->
+              </select><br>
+      
+    
+            <label for="OCCUPATION">
+                What is your Occupation?<br>
+                <span lang="hi">आपका वर्तमान पेशा क्या है?</span>
+            </label>
+            <select name="OCCUPATION" required>
+                <option value="">Select</option>
+                <option value="HOUSEWIFE">Housewife</option>
+                <option value="PROFESSIONAL">Working Professional</option>
+                <option value="SEMI-PROFESSIONAL">Semi-Professional</option>
+                <option value="SEMI-SKILLED">Semi-Skilled</option>
+                <option value="SKILLED">Skilled</option>
+                <option value="STUDENT">Student</option>
+                <option value="UNEMPLOYED">Unemployed</option>
+                <option value="UNSKILLED">Unskilled</option>
+                <!-- Add all possible alternatives here -->
+            </select><br>
+      
+
+      
+            <label for="FAMILY TYPE">
+                What type of family structure do you belong to? (e.g., nuclear, joint-family)<br>
+                <span lang="hi">आप किस प्रकार के पारिवारिक ढांचे से आते हैं? (जैसे, एकल परिवार, संयुक्त परिवार)</span>
+            </label>
+            <select name="FAMILY TYPE" required>
+                <option value="">Select</option>
+                <option value="NUCLEAR">Nuclear</option>
+                <option value="JOINT">Joint-Family</option>
+                <!-- Add all possible alternatives here -->
+            </select><br>
+
+
+        
+            
+            <label for="REG_MENSTRUATION_History">
+                Have you experienced regular menstrual cycles throughout your life?<br>
+                <span lang="hi">क्या आपका मासिक धर्म चक्र जीवन भर नियमित रहा है?</span>
+            </label>
+            <select name="REG_MENSTRUATION_History" required>
+                <option value="">Select</option>
+                <option value="REGULAR">Regular</option>
+                <option value="IRREGULAR">Irregular</option>
+                <!-- Add all possible alternatives here -->
+            </select><br>
+            
+
+        
+          <label for="MENSTRUAL_STATUS">
+              What is your current menstrual status? (e.g., pre-menopausal, menopausal, post-menopausal)<br>
+              <span lang="hi">आपकी वर्तमान मासिक धर्म स्थिति क्या है? (जैसे, रजोनिवृत्तिपूर्व, रजोनिवृत्ति, रजोनिवृत्तिपश्चात)</span>
+          </label>
+          <select name="MENSTRUAL_STATUS" required>
+              <option value="">Select</option>
+              <option value="PERI-MENOPAUSAL">Peri-menopausal</option>
+              <option value="POST-MENOPAUSAL">Post-menopausal</option>
+              <option value="PRE-MENOPAUSAL">Pre-menopausal</option>
+         
+              <!-- Add all possible alternatives here -->
+          </select><br>
+
+ 
+   
+   
+          <label for="HOT FLUSHES">
+              Have you experienced hot flushes?<br>
+              <span lang="hi">क्या आपको कभी गर्मी का अनुभव (हॉट फ्लशेस) हुआ है?</span>
+          </label>
+          <select name="HOT FLUSHES" required>
+              <option value="">Select</option>
+              <option value="NA">Not Applicable</option>
+              <option value="YES">Yes</option>
+              <option value="NO">No</option>
+              <!-- Add all possible alternatives here -->
+          </select><br>
+
+ 
+
+ 
+              <label for="CONCEPTION(NATURALLY CONCEIVE/IVF)">
+                  Have you had any previous experiences with conception, either naturally or through IVF?<br>
+                  <span lang="hi">क्या आपके पास गर्भाधान के लिए पहले कोई अनुभव हैं, चाहे स्वाभाविक रूप से हो या IVF के माध्यम से?</span>
+              </label>
+              <select name="CONCEPTION(NATURALLY CONCEIVE/IVF)" required>
+                  <option value="">Select</option>
+                  <option value="NATURAL">Natural</option>
+                  <option value="IVF">IVF</option>
+                  <option value="NA">Not Applicable</option>
+                  <!-- Add all possible alternatives here -->
+          </select><br>
+
+
+
+
+            <label for="HRT">
+                Have you ever undergone Hormone Replacement Therapy (HRT)?<br>
+                <span lang="hi">क्या आपने कभी हार्मोन रिप्लेसमेंट थेरेपी (HRT) करवायी है?</span>
+            </label>
+            <select name="HRT" required>
+                <option value="">Select</option>
+                <option value="YES">Yes</option>
+                <option value="NO">No</option>
+                <!-- Add all possible alternatives here -->
+        </select><br>
+
+
+
+            
+        <label for="FAMILYHO_CANCER">
+                Do you have a family history for cancer? Has any of your family members ever been diagnosed with cancer in the past.<br>
+                <span lang="hi">क्या आपके परिवार में कैंसर का इतिहास है? क्या आपके किसी परिवार के सदस्य को कभी कैंसर का निदान हुआ है?</span>
+        </label>
+        <select name="FAMILYHO_CANCER" required>
+            <option value="">Select</option>
+            <option value="YES">Yes</option>
+            <option value="NO">No</option>
                     
         </select><br>
 
-        <label for="PAST_SURGERY">
-            PAST_SURGERY (Whether you have any records of past surgery):<br>
-            <span lang="hi">PAST_SURGERY (क्या आपके पास कोई पिछले सर्जरी का रिकॉर्ड है?):</span>
+
+
+        <label for="FAMILYHO_MEMBER_TYPE">
+            Is there a history of Cancer in your family? What degree of immediate relative had a cancer in your family?<br>
+            <span lang="hi">क्या आपके परिवार में कैंसर का कोई इतिहास है? आपके परिवार में किस करीबी रिश्तेदार को कैंसर हुआ था?</span>
         </label>
-        <select name="PAST_SURGERY" required>
+        <select name="FAMILYHO_MEMBER_TYPE" required>
             <option value="">Select</option>
-            <option value="NR">NR (NR)</option>
-            <option value="YES">YES (हाँ)</option>
-            <option value="NO">NO (नहीं)</option>
-            <!-- Add all possible alternatives here -->
-        </select><br>
+            <option value="NA">Not Applicable</option>
+            <option value="FIRST">First</option>
+            <option value="SECOND">Second</option>
+            <option value="THIRD">Third</option>
         
-        <label for="WEIGHT (IN KGS)">
-            WEIGHT (IN KGS):<br>
-            <span lang="hi">WEIGHT (किलोग्राम में वजन):</span>
-        </label>
-        <input type="number" step="0.5" id="weight" name="WEIGHT (IN KGS)" required><br>
-        
-        <label for="HEIGHT (IN CMS)">
-            HEIGHT (IN CMS):<br>
-            <span lang="hi">HEIGHT (सेंटीमीटर में ऊँचाई):</span>
-        </label>
-        <input type="number" step="0.5" id="height" name="HEIGHT (IN CMS)" onchange="calculateBMI()" required><br>
-        
-        <label for="STERILISATION (B/L TUBAL LIGATION)">
-            STERILISATION (B/L TUBAL LIGATION):<br>
-            <span lang="hi">STERILISATION (नसबंदी बीएल ट्यूबल बंधाव):</span>
-        </label>
-        <select name="STERILISATION (B/L TUBAL LIGATION)" required>
-            <option value="">Select</option>
-            <option value="YES">YES (हाँ)</option>
-            <option value="NO">NO (नहीं)</option>
             <!-- Add all possible alternatives here -->
         </select><br>
 
-        <label for="NON-VEG_FREQUENCY">
-            NON-VEG_FREQUENCY:<br>
-            <span lang="hi">NON-VEG_FREQUENCY (मांसाहारी भोजन की आवृत्ति):</span>
+
+
+
+        <label for="RTI/STI">
+            Have you ever contracted a Reproductive Tract Infection (RTI) or a Sexually Transmitted Infection (STI)?<br>
+            <span lang="hi">क्या आपने कभी प्रजनन पथ संक्रमण (RTI) या यौन संचारित संक्रमण (STI) का सामना किया है?</span>
         </label>
-        <select name="NON-VEG_FREQUENCY" required>
+        <select name="RTI/STI" required>
             <option value="">Select</option>
-            <option value="DAILY">DAILY (रोजाना)</option>
-            <option value="FORTNIGHTLY">FORTNIGHTLY (पखवाड़े में एक बार)</option>
-            <option value="HALF YEARLY">HALF YEARLY (छह महीने में एक बार)</option>
-            <option value="MONTHLY">MONTHLY (मासिक)</option>
-            <option value="NR">NR (NR)</option>
-            <option value="QUARTERLY">QUARTERLY (तिमाही)</option>
-            <option value="THRICE WEEKLY">THRICE WEEKLY (सप्ताह में तीन बार)</option>
-            <option value="TWICE WEEKLY">TWICE WEEKLY (सप्ताह में दो बार)</option>
-            <option value="WEEKLY">WEEKLY (साप्ताहिक)</option>
-            <option value="YEARLY">YEARLY (वार्षिक)</option>
-            <!-- Add all possible alternatives here -->
-        </select><br>
-        
-        <label for="EDUCATION">
-            EDUCATION:<br>
-            <span lang="hi">EDUCATION (शिक्षा):</span>
-        </label>
-        <select name="EDUCATION" required>
-            <option value="">Select</option>
-            <option value="GRADUATE">GRADUATE (स्नातक)</option>
-            <option value="ILLITERATE">ILLITERATE (अनपढ़)</option>
-            <option value="INTERMEDIATE">INTERMEDIATE (मध्यवर्ती)</option>
-            <option value="NR">NR (NR)</option>
-            <option value="POST GRADUATE">POST GRADUATE (स्नातकोत्तर)</option>
-            <option value="PRIMARY">PRIMARY (प्राथमिक)</option>
-            <option value="SECONDARY">SECONDARY (माध्यमिक)</option>
-           
+            <option value="YES">Yes</option>
+            <option value="NO">No</option>
+      
             <!-- Add all possible alternatives here -->
         </select><br>
 
-        <label for="PHYSICAL ACTIVITY_GRADE">
-            PHYSICAL ACTIVITY_GRADE:<br>
-            <span lang="hi">PHYSICAL ACTIVITY_GRADE (शारीरिक गतिविधि का स्तर):</span>
+ 
+ 
+ 
+        <label for="FASTING">
+            Do you practice fasting?<br>
+            <span lang="hi">क्या आप उपवासी रहते हैं?</span>
         </label>
-        <select name="PHYSICAL ACTIVITY_GRADE" required>
+        <select name="FASTING" required>
             <option value="">Select</option>
-            <option value="MILD">MILD (मध्यम)</option>
-            <option value="MODERATE">MODERATE (मध्यम)</option>
-            <option value="NIL">NIL (कोई नहीं)</option>
-            <option value="NR">NR (NR)</option>
-            <option value="VIGROUS">VIGOROUS (उत्साही)</option>
+            <option value="YES">Yes</option>
+            <option value="NO">No</option>
+      
             <!-- Add all possible alternatives here -->
         </select><br>
         
-        <label for="RBS">
-            RBS (Random Blood Sugar):<br>
-            <span lang="hi">RBS (यादृच्छिक रक्त शर्करा):</span>
-        </label>
-        <input type="number" step="0.01" name="RBS" required><br>
-        
-        <label for="WHR">
-            WHR (Waist-Hip ratio, generally take values ranging from 0.6 to 1.8 for women):<br>
-            <span lang="hi">WHR (कमर-हिप अनुपात, सामान्यतः महिलाओं के लिए 0.6 से 1.8 तक के मान लेता है):</span>
-        </label>
-        <input type="number" step="0.01" name="WHR" required><br>
-        
-        <label for="RESIDENCE">
-            RESIDENCE:<br>
-            <span lang="hi">RESIDENCE (निवास स्थान):</span>
-        </label>
-        <select name="RESIDENCE" required>
-            <option value="">Select</option>
-            <option value="URBAN">URBAN (शहरी)</option>
-            <option value="RURAL">RURAL (ग्रामीण)</option>
-            <option value="NR">NR (NR)</option>
-            <!-- Add all possible alternatives here -->
-        </select><br>
-        
-        <label for="SES">
-            SES (Socio-Economic Status):<br>
-            <span lang="hi">SES (सामाजिक-आर्थिक स्थिति):</span>
-        </label>
-        <select name="SES" required>
-            <option value="">Select</option>
-            <option value="Lower">Lower (निम्न)</option>
-            <option value="Lower Middle">Lower Middle (निम्न मध्य)</option>
-            <option value="Middle">Middle (मध्य)</option>
-            <option value="Upper">Upper (उच्च)</option>
-            <option value="Upper Middle">Upper Middle (उच्च मध्य)</option>
-            <!-- Add all possible alternatives here -->
-        </select><br>
 
-        <label for="SBP">
-            SBP (Systolic Blood Pressure):<br>
-            <span lang="hi">SBP (सिस्टोलिक रक्तदाब):</span>
+
+
+        <label for="MUSTARD OIL">
+            Do you use mustard oil in your day-to-day routine?<br>
+            <span lang="hi">क्या आप अपने दिन-प्रतिदिन के उपयोग में सरसों का तेल इस्तेमाल करते हैं?</span>
         </label>
-        <input type="number" step="0.5" name="SBP" required><br>
-        
-        <label for="WHO_BMI_CAT">
-            WHO_BMI_CAT:<br>
-            <span lang="hi">WHO_BMI_CAT (WHO बीएमआई वर्गीकरण):</span>
-        </label>
-        <select name="WHO_BMI_CAT" required>
+        <select name="MUSTARD OIL" required>
             <option value="">Select</option>
-            <option value="0BESE CLASS I">0BESE CLASS I (मोटापा वर्ग I)</option>
-            <option value="0VERWEIGHT">0VERWEIGHT (अधिक)</option>
-            <option value="NORMAL">NORMAL (सामान्य)</option>
-            <option value="NR">NR (NR)</option>
-            <option value="OBESE CLASS I">OBESE CLASS I (मोटापा वर्ग 1)</option>
-            <option value="OBESE CLASS II">OBESE CLASS II (मोटापा वर्ग 2)</option>
-            <option value="OBESE CLASS III">OBESE CLASS III (मोटापा वर्ग 3)</option>
-            <option value="OVERWEIGHT">OVERWEIGHT (अधिक वजन)</option>
-            <option value="PRE OBESE">PRE OBESE (पूर्ववर्ती मोटापा)</option>
-            <option value="UNDERWEIGHT">UNDERWEIGHT (कम वजन)</option>
+            <option value="YES">Yes</option>
+            <option value="NO">No</option>
+
             <!-- Add all possible alternatives here -->
         </select><br>
+  
+  
 
-        <label for="WAIST_CMS">
-            WAIST_CMS (Measurement of Waist in centimetres, generally ranging from 60 to 120 for women):<br>
-            <span lang="hi">WAIST_CMS (कमर की माप सेंटीमीटर में, सामान्यतः महिलाओं के लिए 60 से 120 तक):</span>
+        <label for="BREAST TRAUMA">
+            Do you have a history of any type of trauma or injury to your breasts? This includes physical injuries, accidents, or any other incidents that may have affected your breast tissue.<br>
+            <span lang="hi">क्या आपके स्तनों में किसी प्रकार के आघात या चोट का इतिहास है? इसमें शारीरिक चोटें, दुर्घटनाएँ, या कोई अन्य घटनाएँ शामिल हैं जो आपके स्तन ऊतक को प्रभावित कर सकती हैं।</span>
         </label>
-        <input type="number" step="0.01" name="WAIST_CMS" required><br>
-
-        <label for="ABD_OBESITY">
-            ABD_OBESITY:<br>
-            <span lang="hi">ABD_OBESITY (पेट का मोटापा):</span>
-        </label>
-        <select name="ABD_OBESITY" required>
+        <select name="BREAST TRAUMA" required>
             <option value="">Select</option>
-            <option value="#DIV/0!">#DIV/0! (#DIV/0!)</option>
-            <option value="#VALUE!">#VALUE! (#VALUE!)</option>
-            <option value="YES">YES (हाँ)</option>
-            <option value="NO">NO (नहीं)</option>
+            <option value="YES">Yes</option>
+            <option value="NO">No</option>
+
             <!-- Add all possible alternatives here -->
         </select><br>
+  
+  
 
-        <label for="BMI">
-            BMI:<br>
-            <span lang="hi">BMI (शरीर द्रव्यमान सूचकांक):</span>
+        <label for="RADIATION_SITE_CHEST">
+            Has your chest area ever been exposed to radiation, including but not limited to X-rays, CT scans, or other imaging techniques?<br>
+            <span lang="hi">क्या आपके छाती के क्षेत्र को कभी किसी प्रकार की विकिरण, जैसे कि X-रे या अन्य इमेजिंग अध्ययन, के संपर्क में लाया गया है?</span>
         </label>
-        <input type="number" step="0.01" id="BMI" name="BMI" readonly><br>
+        <select name="RADIATION_SITE_CHEST" required>
+            <option value="">Select</option>
+            <option value="YES">Yes</option>
+            <option value="NO">No</option>
+
+            <!-- Add all possible alternatives here -->
+        </select><br>
+  
+  
 
         <input type="submit" value="Predict"><br>
         
