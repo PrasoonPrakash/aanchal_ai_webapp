@@ -6,7 +6,7 @@
     <title>Diagnosis Prediction Result</title>
     <style>
         body {
-            background-color: #ffe6f2; /* Light pink background color */
+            background-color: hsl(192, 100%, 95%); /* Light pink background color */
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
@@ -56,7 +56,10 @@
           </h1>
           
           <p style="font-size: 1rem; /* default font size */">
-            The predicted diagnosis is: {{ prediction }}
+            The predicted diagnosis is: {{ result }}
+            <br>
+            <br>
+            अनुमानित निदान है: {{result_hindi}}
           </p>
           
           <style>
